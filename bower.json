@@ -1,0 +1,19 @@
+{
+  "name": "starterkit-io",
+  "version": "0.0.1",
+  "authors": [
+    "Mickey Cheong <mickey@cheo.ng>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.1"
+  }
+}

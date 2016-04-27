@@ -1,0 +1,17 @@
+{
+  "brand": {
+    "name": "StarterKit.io",
+    "support": {
+      "email": "support@starterkit.io"
+    }
+  },
+  "bcrypt": {
+    "salt": 12
+  },
+  "email": {
+    "from": "noreply@example.com"
+  },
+  "redis": {
+    "url": "redis://root:@localhost:6379"
+  }
+}

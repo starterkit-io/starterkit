@@ -1,0 +1,8 @@
+/server/public/components
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+/server/configs/*.json
+!/server/configs/db.json
+!/server/configs/default.json
