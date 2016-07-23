@@ -12,6 +12,6 @@
     "from": "noreply@example.com"
   },
   "redis": {
-    "url": "redis://root:@localhost:6379"
+    "url": "redis://root@localhost:6379"
   }
 }
