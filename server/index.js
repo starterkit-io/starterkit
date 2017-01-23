@@ -59,6 +59,7 @@ console.log('==> Connecting to Redis at', nconf.get('redis:url'));
 var redisClient = require('redis').createClient(nconf.get('redis:url'));
 redisClient.on('connect', function () {
   console.log('==> Redis connected at ' + nconf.get('redis:url'));
+  require('./lib/acl').getInstance(redisClient, 'acl_');
 });
 redisClient.on('error', function (err) {
   console.log('==> Error Redis connection at ' + nconf.get('redis:url') + ':\n' + err);
@@ -128,5 +129,5 @@ app.listen(port, '0.0.0.0', function onStart (err) {
   if (err) {
     console.log(err);
   }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
+  console.info('==> 🌎 Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
 });

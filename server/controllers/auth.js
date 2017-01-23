@@ -63,10 +63,11 @@ router.get('/login', function (req, res) {
 router.post('/login', function (req, res, next) {
   forms.loginForm.handle(req, {
     success: function (form) {
-      UserService.login({
-        successRedirect: '/dashboard',
-        failureRedirect: '/login',
-      })(req, res, next);
+      UserService
+        .login(req, res, next)
+        .then(function (account) {
+          res.redirect((account.newPasswordRequired) ? '/password/new' : '/dashboard');
+        });
     },
     error: function (form) {
       res.render('auth/login', {
@@ -86,6 +87,45 @@ router.post('/login', function (req, res, next) {
 router.get('/logout', function (req, res) {
   req.logout();
   res.redirect("/");
+});
+
+router.get('/password/new', function (req, res) {
+  res.render('auth/newPassword', {
+    passwordForm: forms.resetPasswordForm,
+    bootstrapField: formFields.bootstrapField
+  });
+});
+
+router.post('/password/new', function (req, res) {
+  forms.resetPasswordForm.handle(req, {
+    success: function (form) {
+      UserService
+        .newPassword(req.user, form.data)
+        .then(function () {
+          req.flash('success', "Password successfully updated");
+          res.redirect('/dashboard');
+        })
+        .catch(function (err) {
+          req.flash('error', err.message);
+          res.render('auth/newPassword', {
+            passwordForm: form,
+            bootstrapField: formFields.bootstrapField
+          });
+        });
+    },
+    error: function (form) {
+      res.render('auth/newPassword', {
+        passwordForm: form,
+        bootstrapField: formFields.bootstrapField
+      });
+    },
+    empty: function (form) {
+      res.render('auth/newPassword', {
+        passwordForm: form,
+        bootstrapField: formFields.bootstrapField
+      });
+    }
+  });
 });
 
 router.get('/forgot', function (req, res) {

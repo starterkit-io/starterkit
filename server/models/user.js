@@ -1,11 +1,15 @@
 'use strict';
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var nconf = require('nconf');
 var crypto = require('crypto');
 
 module.exports = function (sequelize, DataTypes) {
   var Users = sequelize.define('Users', {
+    roleId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,6 +47,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: true
     },
+    newPasswordRequired: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     firstname: {
       type: DataTypes.STRING,
       allowNull: true
@@ -53,6 +61,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   }, {
     classMethods: {
+      associate: function (models) {
+        models.Users.belongsTo(models.Roles, { as: 'role' });
+      },
       verifyPassword: function (user, password) {
         return (new Promise(function (resolve, reject) {
           var isValid = user.validPassword(password);

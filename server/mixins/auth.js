@@ -1,9 +1,13 @@
 "use strict";
 
-var Auth = {}
+var Auth = {};
 
 Auth.isAuthenticated = function (req, res, next) {
   if (req.isAuthenticated()) {
+  	if (req.user.newPasswordRequired) {
+  		req.flash('info', "You are require to set a new password");
+  		res.redirect('/password/new');
+  	}
     next();
     return;
   }

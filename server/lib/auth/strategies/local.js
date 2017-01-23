@@ -13,7 +13,10 @@ passport.use(new LocalStrategy({
       .find({
         where: {
           email: username
-        }
+        },
+        include: [
+          { model: models.Roles, as: 'role' }
+        ]
       })
       .then(function (user) {
         if (!user) {

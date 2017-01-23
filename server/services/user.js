@@ -5,6 +5,7 @@ var moment = require('moment');
 var passport = require('passport');
 var Promise = require('bluebird');
 var errors = require('../lib/errors');
+//var acl = require('../lib/acl').getInstance().getAcl();
 var models = require('../models');
 
 var UserService = {};
@@ -52,14 +53,21 @@ UserService.activate = function (token) {
     });
 };
 
-UserService.login = function () {
-  return function (req, res, next) {
-    passport.authenticate('local',{
-      successRedirect: '/dashboard',
-      failureRedirect: '/login',
-      failureFlash: true
+UserService.login = function (req, res, next) {
+  return new Promise(function(resolve, reject) {
+    passport.authenticate('local', function (err, account) {
+      if (err) { 
+        console.log(err.message);
+        reject(new Error(err.message));
+        return;
+      }
+
+      req.logIn(account, function () {
+        //acl.addUserRoles(account.id, account.role.uuid);
+        resolve(account);
+      });
     })(req, res, next);
-  };
+  });
 };
 
 UserService.forgotPassword = function (data) {
@@ -100,6 +108,22 @@ UserService.validateResetPasswordToken = function (token) {
       // Throws error if no valid token found
       throw new errors.User.ResetPasswordTokenInvalid();
     });
+};
+
+UserService.newPassword = function (user, data) {
+  return new Promise(function(resolve, reject) {
+    if (user.validPassword(data.password)) {
+      reject(new Error("Your new password cannot be the same as the last password"));
+    }
+    user.password = data.password;
+    user.password2 = data.password2;
+    user.newPasswordRequired = false;
+    user
+      .save()
+      .then(function (user) {
+        resolve(user);
+      });
+  });
 };
 
 UserService.resetPassword = function (token, data) {
