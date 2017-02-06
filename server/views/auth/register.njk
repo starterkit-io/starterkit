@@ -1,5 +1,10 @@
-<%- include('../layouts/header') -%>
+{% extends "layouts/default.njk" %}
 
+{% block navSignUp %}
+class="active"
+{% endblock %}
+
+{% block body %}
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
@@ -8,29 +13,29 @@
       <p class="lead">Enter your details to register</p>
 
       <form method="post" action="/register">
-        <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
+        <input type="hidden" name="_csrf" value="{{ req.csrfToken() }}" />
         <legend>Account details</legend>
-        <%- registerForm.fields.email.toHTML(null, bootstrapField) -%>
+        {{ registerForm.fields.email.toHTML(null, bootstrapField) | safe }}
         <div class="row">
           <div class="col-xs-6">
-            <%- registerForm.fields.password.toHTML(null, bootstrapField) -%>
+            {{ registerForm.fields.password.toHTML(null, bootstrapField) | safe }}
           </div>
           <div class="col-xs-6">
-            <%- registerForm.fields.password2.toHTML(null, bootstrapField) -%>
+            {{ registerForm.fields.password2.toHTML(null, bootstrapField) | safe }}
           </div>
         </div>
         <br/>
         <legend>Profile details</legend>
         <div class="row">
           <div class="col-sm-6">
-            <%- registerForm.fields.firstname.toHTML(null, bootstrapField) -%>
+            {{ registerForm.fields.firstname.toHTML(null, bootstrapField) | safe }}
           </div>
           <div class="col-sm-6">
-            <%- registerForm.fields.lastname.toHTML(null, bootstrapField) -%>
+            {{ registerForm.fields.lastname.toHTML(null, bootstrapField) | safe }}
           </div>
         </div>
         <br/>
-        <p class="well">By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+        <p class="well">By signing up, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</p>
         <div class="form-group">
           <button type="submit" class="btn btn-default">Submit</button> <a href="/login" class="btn-link btn">Have an account? Log in here</a>
         </div>
@@ -38,5 +43,4 @@
     </div>
   </div>
 </div>
-
-<%- include('../layouts/footer') -%>
+{% endblock %}

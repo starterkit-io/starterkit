@@ -12,6 +12,14 @@ router.get('/about', function (req, res) {
   res.render('about', {});
 });
 
+router.get('/terms', function (req, res) {
+  res.render('terms', {});
+});
+
+router.get('/privacy', function (req, res) {
+  res.render('privacy', {});
+});
+
 router.get('/dashboard', AuthMixin.isAuthenticated, function (req, res) {
   res.render('dashboard', {});
 });

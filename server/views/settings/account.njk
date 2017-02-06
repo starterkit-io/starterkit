@@ -1,6 +1,10 @@
-<% global.headerNav = 'settings'; %>
-<% include ../layouts/header.ejs %>
+{% extends "layouts/default.njk" %}
 
+{% block navSettings %}
+class="active"
+{% endblock %}
+
+{% block body %}
 <div class="container">
   <div class="page-header">
     <h1>Settings</h1>
@@ -8,8 +12,8 @@
 
   <div class="row">
     <div class="col-sm-3">
-      <% var settingsNav = 'account'; %>
-      <% include _nav.ejs %>
+      {% set settingsNav = 'account' %}
+      {% include "settings/_nav.njk" %}
     </div>
     <div class="col-sm-9">
       <div class="panel panel-default">
@@ -18,19 +22,19 @@
         </div>
         <div class="panel-body">
           <form class="form" method="post" action="/settings/account/email">
-            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
+            <input type="hidden" name="_csrf" value="{{ req.csrfToken() }}" />
             <div class="row">
               <div class="col-sm-6">
-                <%- updateEmailForm.fields.email.toHTML(null, bootstrapField) -%>
+                {{ updateEmailForm.fields.email.toHTML(null, bootstrapField) | safe }}
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="email">Current email address</label>
-                  <p class="form-control-static"><%= req.user.email %></p>
+                  <p class="form-control-static">{{ req.user.email }}</p>
                 </div>
               </div>
             </div>
-            <%- updateEmailForm.fields.password.toHTML(null, bootstrapField) -%>
+            {{ updateEmailForm.fields.password.toHTML(null, bootstrapField) |safe }}
             <button type="submit" class="btn btn-default">Update email</button>
           </form>
         </div>
@@ -42,14 +46,14 @@
         </div>
         <div class="panel-body">
           <form class="form" method="post" action="/settings/account/password">
-            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
-            <%- updatePasswordForm.fields.password.toHTML(null, bootstrapField) -%>
+            <input type="hidden" name="_csrf" value="{{ req.csrfToken() }}" />
+            {{ updatePasswordForm.fields.password.toHTML(null, bootstrapField) | safe }}
             <div class="row">
               <div class="col-md-6">
-                <%- updatePasswordForm.fields.newpassword.toHTML(null, bootstrapField) -%>
+                {{ updatePasswordForm.fields.newpassword.toHTML(null, bootstrapField) | safe }}
               </div>
               <div class="col-md-6">
-                <%- updatePasswordForm.fields.newpassword2.toHTML(null, bootstrapField) -%>
+                {{ updatePasswordForm.fields.newpassword2.toHTML(null, bootstrapField) | safe }}
               </div>
             </div>
             <button type="submit" class="btn btn-default">Update password</button>
@@ -62,12 +66,12 @@
           <h4 class="panel-title">Delete account</h4>
         </div>
         <div class="panel-body">
-          <p>If you do not think you will use <%= brand.name %> again and would like your account deleted, we can take care
+          <p>If you do not think you will use {{ brand.name }} again and would like your account deleted, we can take care
           of this for you. Keep in mind that you will not be able to reactivate your account or retrieve any of the content
           or information you have added.</p>
           <form class="form" method="post" action="/settings/account/delete">
-            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
-            <%- deleteAccountForm.fields.email.toHTML(null, bootstrapField) -%>
+            <input type="hidden" name="_csrf" value="{{ req.csrfToken() }}" />
+            {{ deleteAccountForm.fields.email.toHTML(null, bootstrapField) | safe }}
             <button type="submit" class="btn btn-danger">Yes, I understand and please delete my account now</button>
           </form>
         </div>
@@ -76,5 +80,4 @@
   </div>
 
 </div>
-
-<%- include('../layouts/footer') -%>
+{% endblock %}

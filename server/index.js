@@ -48,7 +48,7 @@ app.use(cors());
 var csurf = require('csurf');
 app.use(csurf({ cookie: true }));
 app.use(function (err, req, res, next) {
-  if (err.code !== 'EBADCSRFTOKEN') return next(err)
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
   // handle CSRF token errors here
   res.status(403).send('This form has been tampered with.');
@@ -90,14 +90,49 @@ require('./lib/auth');
 // Flash
 var flash = require('flash');
 app.use(flash());
+app.use(function(req, res, next) {
+  req.session.flash = [];
+  var _render = res.render;
+  res.render = function(view, options, fn) {
+    if (req.session) {
+      // support the callback as the second argument
+      if (typeof(options) === 'function') {
+        fn = options;
+        options = {};
+      }
+
+      if (!options) {
+        options = {};
+      }
+
+      if (req.session.flash.length > 0 && res.locals.flash.length === 0) {
+        options.flash = req.session.flash;
+        req.session.flash = [];
+      }
+    }
+
+    _render.call(this, view, options, fn);
+  };
+  next();
+});
+
+// app.use(function (req, res, next) {
+//   req.flash("error", "test");
+//   next();
+// });
 
 // Set public directory
 var publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
-app.use(express.static(path.resolve(__dirname, '/../bower_components')));
+
+// Set bower directory
+var bowerPath = path.resolve(__dirname, './public/components');
+app.use(express.static(bowerPath));
 
 // Set view engine
-app.set('view engine', 'ejs');
+var cons = require('consolidate');
+app.engine('njk', cons.nunjucks);
+app.set('view engine', 'njk');
 app.set('views', __dirname + '/views');
 
 // Health check
@@ -129,5 +164,5 @@ app.listen(port, '0.0.0.0', function onStart (err) {
   if (err) {
     console.log(err);
   }
-  console.info('==> 🌎 Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
+  console.info('==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
 });

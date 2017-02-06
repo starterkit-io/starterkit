@@ -1,17 +1,21 @@
-<% global.headerNav = 'settings'; %>
-<% include ../layouts/header.ejs %>
+{% extends "layouts/default.njk" %}
 
+{% block navSettings %}
+class="active"
+{% endblock %}
+
+{% block body %}
 <div class="container">
   <div class="page-header">
     <h1>Settings</h1>
   </div>
 
   <div class="row">
-    <div class="col-md-3">
-      <% var settingsNav = 'profile'; %>
-      <% include _nav.ejs %>
+    <div class="col-sm-3">
+      {% set settingsNav = 'profile' %}
+      {% include "settings/_nav.njk" %}
     </div>
-    <div class="col-md-9">
+    <div class="col-sm-9">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">Update Profile</h4>
@@ -21,10 +25,10 @@
             <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
             <div class="row">
               <div class="col-sm-6">
-                <%- updateProfileForm.fields.firstname.toHTML(null, bootstrapField) -%>
+                {{ updateProfileForm.fields.firstname.toHTML(null, bootstrapField) | safe }}
               </div>
               <div class="col-sm-6">
-                <%- updateProfileForm.fields.lastname.toHTML(null, bootstrapField) -%>
+                {{ updateProfileForm.fields.lastname.toHTML(null, bootstrapField) | safe }}
               </div>
             </div>
             <button type="submit" class="btn btn-default">Update profile</button>
@@ -35,5 +39,4 @@
   </div>
 
 </div>
-
-<%- include('../layouts/footer') -%>
+{% endblock %}
