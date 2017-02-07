@@ -7,13 +7,13 @@ class="active"
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-xs-0 col-sm-2 col-md-2 hidden-xs">
+		<div class="col-xs-0 col-sm-3 col-md-3 hidden-xs">
 			<h4 style="margin-top: 50px;">Documentation</h4>
-			<ul>
-				<li><a href="/docs/at-a-glance">At a Glance</a></li>
-				<li><a href="/docs/getting-started">Getting Started</a></li>
-				<li><a href="/docs/tutorials">Tutorials</a></li>
-			</ul>
+			<div class="list-group">
+				<a href="/docs/at-a-glance" class="list-group-item">At a Glance</a>
+				<a href="/docs/getting-started" class="list-group-item">Getting Started</a>
+				<a href="/docs/tutorials" class="list-group-item">Tutorials</a>
+			</div>
 		</div>
 		<div class="col-xs-12 visible-xs-block">
 			<h4>Documentation</h4>
@@ -23,7 +23,7 @@ class="active"
 				<a href="/docs/tutorials" class="list-group-item">Tutorials</a>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-9 col-sm-offset-1 col-md-9 col-md-offset-0">
+		<div class="col-xs-12 col-sm-9 col-md-9">
 			{% block content %}{% endblock %}
 		</div>
 	</div>

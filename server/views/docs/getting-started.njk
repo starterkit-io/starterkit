@@ -16,8 +16,9 @@
 	<li>After the cloning process is done, change directory to the project folder by typing cd <code>&lt;app-name-in-alphanumeric-without-space&gt;</code></li>
 	<li>Once you are in the project folder, add heroku to your project by typing git remote add heroku https://git.heroku.com/<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.git</li>
 	<li>Next, you need to add Heroku PostgreSQL to your heroku app. To do this, type heroku addons:create heroku-postgresql:hobby-dev.</li>
-	<li>Then, you will need to do the same for Heroku Redis. Type heroku addons:create heroku-redis:hobby-dev.</li>
-	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type heroku addons:create sendgrid:starter.</li>
+	<li>Then, you will need to do the same for Heroku Redis. Type <code>heroku addons:create heroku-redis:hobby-dev</code>.</li>
+	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type <code>heroku addons:create sendgrid:starter</code>.</li>
+	<li>This starterkit is also equiped with the finest NodeJS monitoring service, <a href="https://trace.risingstack.com/" target="_blank">Trace by RisingStack</a>. To enable it, we need to type <code>heroku addons:create trace:lite</code>.</li>
 	<li>Finally, you deploy the starterkit by typing git push heroku master.</li>
 	<li>Once the deployment is done, you can type http://<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.herokuapp.com into your browser to see your shiny new application.</li>
 </ol>
