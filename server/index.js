@@ -28,8 +28,8 @@ Object.keys(process.env).forEach(function (key) {
 
 nconf.argv()
   .env('_')
-  .file('default', path.resolve(__dirname, './configs/default.json'))
-  .file('environment', path.resolve(__dirname, './configs/' + process.env.NODE_ENV + '.json'));
+  .file('environment', path.resolve(__dirname, './configs/' + process.env.NODE_ENV + '.json'))
+  .file('default', path.resolve(__dirname, './configs/default.json'));
 
 // bodyParser
 var bodyParser = require('body-parser');
