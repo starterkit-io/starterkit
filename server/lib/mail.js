@@ -3,16 +3,13 @@
 var Promise = require('bluebird');
 var nconf = require('nconf');
 var nodemailer = require('nodemailer');
-var sgTransport = require('nodemailer-sendgrid-transport');
+var spTransport = require('nodemailer-sparkpost-transport');
 
 var Mail = function () {
   var options = {
-    auth: {
-      api_user: nconf.get('sendgrid:username'),
-      api_key: nconf.get('sendgrid:password')
-    }
+    sparkPostApiKey: nconf.get('sparkpost:api:key')
   };
-  this.client = nodemailer.createTransport(sgTransport(options));
+  this.client = nodemailer.createTransport(spTransport(options));
 };
 
 Mail._instance = null;
@@ -29,6 +26,7 @@ Mail.prototype.send = function(email){
   return (new Promise(function(resolve, reject){
     self.client.sendMail(email, function(err, info) {
       if (err) {
+        console.log("[Error] Mail.send():", err);
         return reject(err);
       }
       return resolve(info);

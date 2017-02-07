@@ -9,7 +9,12 @@
     "salt": 12
   },
   "email": {
-    "from": "noreply@example.com"
+    "from": "noreply@sparkpostbox.com"
+  },
+  "sparkpost": {
+    "api": {
+      "key": ""
+    }
   },
   "redis": {
     "url": "redis://root@localhost:6379"

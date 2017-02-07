@@ -21,7 +21,7 @@ We are working towards making it easier to get started with this starter kit eve
 7. Once you are in the project folder, add heroku to your project by typing `git remote add heroku https://git.heroku.com/<app-name-in-alphanumeric-without-space>.git`
 8. Next, you need to add Heroku PostgreSQL to your heroku app. To do this, type `heroku addons:create heroku-postgresql:hobby-dev`.
 9. Then, you will need to do the same for Heroku Redis. Type `heroku addons:create heroku-redis:hobby-dev`.
-10. As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type `heroku addons:create sendgrid:starter`.
+10. As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SparkPost. To add SparkPost, type `heroku addons:create sparkpost`.
 11. Finally, you deploy the starterkit by typing `git push heroku master`.
 12. Once the deployment is done, you can type `http://<app-name-in-alphanumeric-without-space>.herokuapp.com` into your browser to see your shiny new application.
 13. Done. Easy peasy.
@@ -32,7 +32,7 @@ Here's a list of dependencies:
 
 - Heroku
 - PostgreSQL
-- Sendgrid
+- SparkPost
 - NodeJs
 - ExpressJS
 - Bootstrap
