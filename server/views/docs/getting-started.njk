@@ -19,6 +19,8 @@
 	<li>Then, you will need to do the same for Heroku Redis. Type <code>heroku addons:create heroku-redis:hobby-dev</code>.</li>
 	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type <code>heroku addons:create sendgrid:starter</code>.</li>
 	<li>This starterkit is also equiped with the finest NodeJS monitoring service, <a href="https://trace.risingstack.com/" target="_blank">Trace by RisingStack</a>. To enable it, we need to type <code>heroku addons:create trace:lite</code>.</li>
+	<li>(OPTIONAL) <a href="https://liberato.com" target="_blank">Liberato</a> provides a nice dashboard on the Heroku services that will be handy for monitoring at a glance. You can enable it for free via <code>heroku addons:create librato:development</code>.</li>
+	<li>(OPTIONAL) <a href="https://logdna.com" target="_blank">LogDNA</a> is an excellent cloud log management system where you can do a live tail on the processes. You can enable it for free via <code>heroku addons:create logdna:quaco</code>.</li>
 	<li>Finally, you deploy the starterkit by typing git push heroku master.</li>
 	<li>Once the deployment is done, you can type http://<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.herokuapp.com into your browser to see your shiny new application.</li>
 </ol>
