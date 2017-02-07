@@ -116,11 +116,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.use(function (req, res, next) {
-//   req.flash("error", "test");
-//   next();
-// });
-
 // Set public directory
 var publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
@@ -157,6 +152,7 @@ app.use(function (req, res, next) {
 // Load controllers
 app.use('/', require('./controllers/core'));
 app.use('/', require('./controllers/auth'));
+app.use('/docs', require('./controllers/docs'));
 app.use('/settings', require('./controllers/settings'));
 
 // Start listening
