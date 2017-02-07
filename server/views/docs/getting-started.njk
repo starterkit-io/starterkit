@@ -1,0 +1,28 @@
+{% extends "layouts/docs.njk" %}
+
+{% block content %}
+<h1 class="page-header">Getting Started</h1>
+
+<p class="lead">We are working towards making it easier to get started with this starter kit everyday.</p> 
+
+<p>The kit is still in beta stage, please follow the steps below to setup the project:</p>
+
+<ol>
+	<li>If you do not have a <strong>Heroku</strong> account, go to <a href="https://heroku.com/" target="_blank">Heroku</a> to sign up for an account.</li>
+	<li>Once you have created an account (or if you already have an existing Heroku account), go to <a href="https://toolbelt.heroku.com/" target="_blank">Heroku Toolbelt</a> to download the program and follow the installation steps.</li>
+	<li>Open up your console (for OS X - terminal.app, for Windows - command prompt) and type heroku login to login with your account.</li>
+	<li>Create a Heroku app by typing heroku create <code>&lt;app-name-in-alphanumeric-without-space&gt;</code>. (Remember to change your directory to your project folder) Clone starterkit by typing git clone git@bitbucket.org:starterkit/starterkit.git <code>&lt;app-name-in-alphanumeric-without-space&gt;</code>
+	</li>
+	<li>After the cloning process is done, change directory to the project folder by typing cd <code>&lt;app-name-in-alphanumeric-without-space&gt;</code></li>
+	<li>Once you are in the project folder, add heroku to your project by typing git remote add heroku https://git.heroku.com/<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.git</li>
+	<li>Next, you need to add Heroku PostgreSQL to your heroku app. To do this, type heroku addons:create heroku-postgresql:hobby-dev.</li>
+	<li>Then, you will need to do the same for Heroku Redis. Type heroku addons:create heroku-redis:hobby-dev.</li>
+	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type heroku addons:create sendgrid:starter.</li>
+	<li>Finally, you deploy the starterkit by typing git push heroku master.</li>
+	<li>Once the deployment is done, you can type http://<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.herokuapp.com into your browser to see your shiny new application.</li>
+</ol>
+
+<br/>
+
+<h4>Done. Easy peasy.</h4>
+{% endblock %}

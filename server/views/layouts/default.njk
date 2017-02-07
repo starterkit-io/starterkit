@@ -38,6 +38,7 @@
               <li {% block navDashboard %}{% endblock %}><a href="/dashboard">Dashboard</a></li>
             {% else %}
               <li {% block navAbout %}{% endblock %}><a href="/about">About</a></li>
+              <li {% block navDocs %}{% endblock %}><a href="/docs">Docs</a></li>
             {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -80,7 +81,8 @@
         &copy; 2017 {{ brand.name }}. &nbsp;&nbsp;
         <a href="/terms">Terms</a> &nbsp;&nbsp;
         <a href="/privacy">Privacy</a> &nbsp;&nbsp;
-        <a href="/about">About</a>
+        <a href="/about">About</a> &nbsp;&nbsp;
+        <a href="/about">Docs</a>
       </div>
     </div>
     
