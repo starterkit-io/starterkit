@@ -5,23 +5,23 @@ var router = express.Router();
 var AuthMixin = require('../mixins/auth');
 
 router.get('/', function (req, res) {
-  res.render('index', {});
+  res.render('core/index', {});
 });
 
 router.get('/about', function (req, res) {
-  res.render('about', {});
+  res.render('core/about', {});
 });
 
 router.get('/terms', function (req, res) {
-  res.render('terms', {});
+  res.render('core/terms', {});
 });
 
 router.get('/privacy', function (req, res) {
-  res.render('privacy', {});
+  res.render('core/privacy', {});
 });
 
 router.get('/dashboard', AuthMixin.isAuthenticated, function (req, res) {
-  res.render('dashboard', {});
+  res.render('core/dashboard', {});
 });
 
 module.exports = router;
