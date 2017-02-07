@@ -28,7 +28,6 @@
     "csurf": "^1.8.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "flash": "^1.1.0",
     "forms": "^1.1.4",
     "moment": "^2.11.2",
     "morgan": "^1.7.0",

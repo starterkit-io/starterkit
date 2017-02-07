@@ -90,33 +90,8 @@ app.use(passport.session());
 require('./lib/auth');
 
 // Flash
-var flash = require('flash');
+var flash = require('./lib/flash');
 app.use(flash());
-app.use(function(req, res, next) {
-  req.session.flash = [];
-  var _render = res.render;
-  res.render = function(view, options, fn) {
-    if (req.session) {
-      // support the callback as the second argument
-      if (typeof(options) === 'function') {
-        fn = options;
-        options = {};
-      }
-
-      if (!options) {
-        options = {};
-      }
-
-      if (req.session.flash.length > 0 && res.locals.flash.length === 0) {
-        options.flash = req.session.flash;
-        req.session.flash = [];
-      }
-    }
-
-    _render.call(this, view, options, fn);
-  };
-  next();
-});
 
 // Set public directory
 var publicPath = path.resolve(__dirname, './public');

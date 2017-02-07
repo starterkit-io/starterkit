@@ -22,7 +22,7 @@ class="active"
         </div>
         <div class="panel-body">
           <form class="form" method="post" action="/settings/profile">
-            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>" />
+            <input type="hidden" name="_csrf" value="{{ req.csrfToken() }}" />
             <div class="row">
               <div class="col-sm-6">
                 {{ updateProfileForm.fields.firstname.toHTML(null, bootstrapField) | safe }}
