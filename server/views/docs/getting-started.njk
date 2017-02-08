@@ -1,5 +1,9 @@
 {% extends "layouts/docs.njk" %}
 
+{% block docNavGettingStarted %}
+active
+{% endblock %}
+
 {% block content %}
 <h1 class="page-header">Getting Started</h1>
 
@@ -10,17 +14,18 @@
 <ol>
 	<li>If you do not have a <strong>Heroku</strong> account, go to <a href="https://heroku.com/" target="_blank">Heroku</a> to sign up for an account.</li>
 	<li>Once you have created an account (or if you already have an existing Heroku account), go to <a href="https://toolbelt.heroku.com/" target="_blank">Heroku Toolbelt</a> to download the program and follow the installation steps.</li>
-	<li>Open up your console (for OS X - terminal.app, for Windows - command prompt) and type heroku login to login with your account.</li>
-	<li>Create a Heroku app by typing heroku create <code>&lt;app-name-in-alphanumeric-without-space&gt;</code>. (Remember to change your directory to your project folder) Clone starterkit by typing git clone git@bitbucket.org:starterkit/starterkit.git <code>&lt;app-name-in-alphanumeric-without-space&gt;</code>
+	<li>Open up your console (for OS X - terminal.app, for Windows - command prompt) and type <code>heroku login</code> to login with your account.</li>
+	<li>Create a Heroku app by typing <code>heroku create &lt;app-name-in-alphanumeric-without-space&gt;</code>.</li>
+	<li>Clone StarterKit by typing <code>git clone git@github.com:mickeyckm/starterkit.git &lt;app-name-in-alphanumeric-without-space&gt;</code>.
 	</li>
-	<li>After the cloning process is done, change directory to the project folder by typing cd <code>&lt;app-name-in-alphanumeric-without-space&gt;</code></li>
-	<li>Once you are in the project folder, add heroku to your project by typing git remote add heroku https://git.heroku.com/<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.git</li>
-	<li>Next, you need to add Heroku PostgreSQL to your heroku app. To do this, type heroku addons:create heroku-postgresql:hobby-dev.</li>
-	<li>Then, you will need to do the same for Heroku Redis. Type <code>heroku addons:create heroku-redis:hobby-dev</code>.</li>
-	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose SendGrid. To add SendGrid, type <code>heroku addons:create sendgrid:starter</code>.</li>
+	<li>After the cloning process is done, change directory to the project folder by typing <code>cd &lt;app-name-in-alphanumeric-without-space&gt;</code>.</li>
+	<li>Once you are in the project folder, add heroku to your project by typing <code>git remote add heroku https://git.heroku.com/&lt;app-name-in-alphanumeric-without-space&gt;.git</code>.</li>
+	<li>Next, you need to add <a href="https://www.heroku.com/postgres" target="_blank">Heroku Postgre</a> to your heroku app. To do this, type <code>heroku addons:create heroku-postgresql:hobby-dev</code>.</li>
+	<li>Then, you will need to do the same for <a href="https://elements.heroku.com/addons/heroku-redis" target="_blank">Heroku Redis</a>. Type <code>heroku addons:create heroku-redis:hobby-dev</code>.</li>
+	<li>As the starterkit pre-built with all the user authentication features such as forget password, it is tightly coupled with an email service and for our choice, we chose <a href="https://sparkpost.com">SparkPost</a>. To add SparkPost, type <code>heroku addons:create sparkpost:free</code>.</li>
 	<li>This starterkit is also equiped with the finest NodeJS monitoring service, <a href="https://trace.risingstack.com/" target="_blank">Trace by RisingStack</a>. To enable it, we need to type <code>heroku addons:create trace:lite</code>.</li>
-	<li>(OPTIONAL) <a href="https://liberato.com" target="_blank">Liberato</a> provides a nice dashboard on the Heroku services that will be handy for monitoring at a glance. You can enable it for free via <code>heroku addons:create librato:development</code>.</li>
-	<li>(OPTIONAL) <a href="https://logdna.com" target="_blank">LogDNA</a> is an excellent cloud log management system where you can do a live tail on the processes. You can enable it for free via <code>heroku addons:create logdna:quaco</code>.</li>
+	<li><span class="label label-warning">OPTIONAL</span> <a href="https://liberato.com" target="_blank">Liberato</a> provides a nice dashboard on the Heroku services that will be handy for monitoring at a glance. You can enable it for free via <code>heroku addons:create librato:development</code>.</li>
+	<li><span class="label label-warning">OPTIONAL</span> <a href="https://logdna.com" target="_blank">LogDNA</a> is an excellent cloud log management system where you can do a live tail on the processes. You can enable it for free via <code>heroku addons:create logdna:quaco</code>.</li>
 	<li>Finally, you deploy the starterkit by typing git push heroku master.</li>
 	<li>Once the deployment is done, you can type http://<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.herokuapp.com into your browser to see your shiny new application.</li>
 </ol>

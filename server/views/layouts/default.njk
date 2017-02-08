@@ -69,19 +69,27 @@
     {% endfor %}
     
     {% block body %}{% endblock %}
+    
+    <br/>
+    <hr/>
+    <br/>
 
-    <br/>
-    <br/>
     <div class="footer">
       <div class="container">
-        <div class="pull-right">
-          Powered by <a href="http://starterkit.io">StarterKit.io</a>
+        <div class="row">
+          <div class="col-sm-6">
+            <p>
+              &copy; 2017 {{ brand.name }}. &nbsp;&nbsp;
+              <a href="/terms">Terms</a> &nbsp;&nbsp;
+              <a href="/privacy">Privacy</a> &nbsp;&nbsp;
+              <a href="/about">About</a> &nbsp;&nbsp;
+              <a href="/docs">Docs</a>
+            </p>
+          </div>
+          <div class="col-sm-6 hidden-xs text-right">
+            <p>Powered by <a href="http://starterkit.io">StarterKit.io</a></p>
+          </div>
         </div>
-        &copy; 2017 {{ brand.name }}. &nbsp;&nbsp;
-        <a href="/terms">Terms</a> &nbsp;&nbsp;
-        <a href="/privacy">Privacy</a> &nbsp;&nbsp;
-        <a href="/about">About</a> &nbsp;&nbsp;
-        <a href="/docs">Docs</a>
       </div>
     </div>
     
