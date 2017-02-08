@@ -16,7 +16,7 @@ active
 	<li>Once you have created an account (or if you already have an existing Heroku account), go to <a href="https://toolbelt.heroku.com/" target="_blank">Heroku Toolbelt</a> to download the program and follow the installation steps.</li>
 	<li>Open up your console (for OS X - terminal.app, for Windows - command prompt) and type <code>heroku login</code> to login with your account.</li>
 	<li>Create a Heroku app by typing <code>heroku create &lt;app-name-in-alphanumeric-without-space&gt;</code>.</li>
-	<li>Clone StarterKit by typing <code>git clone git@github.com:mickeyckm/starterkit.git &lt;app-name-in-alphanumeric-without-space&gt;</code>.
+	<li>Clone StarterKit by typing <code>git clone git@github.com:starterkit-io/starterkit.git &lt;app-name-in-alphanumeric-without-space&gt;</code>.
 	</li>
 	<li>After the cloning process is done, change directory to the project folder by typing <code>cd &lt;app-name-in-alphanumeric-without-space&gt;</code>.</li>
 	<li>Once you are in the project folder, add heroku to your project by typing <code>git remote add heroku https://git.heroku.com/&lt;app-name-in-alphanumeric-without-space&gt;.git</code>.</li>
@@ -26,8 +26,8 @@ active
 	<li>This starterkit is also equiped with the finest NodeJS monitoring service, <a href="https://trace.risingstack.com/" target="_blank">Trace by RisingStack</a>. To enable it, we need to type <code>heroku addons:create trace:lite</code>.</li>
 	<li><span class="label label-warning">OPTIONAL</span> <a href="https://liberato.com" target="_blank">Liberato</a> provides a nice dashboard on the Heroku services that will be handy for monitoring at a glance. You can enable it for free via <code>heroku addons:create librato:development</code>.</li>
 	<li><span class="label label-warning">OPTIONAL</span> <a href="https://logdna.com" target="_blank">LogDNA</a> is an excellent cloud log management system where you can do a live tail on the processes. You can enable it for free via <code>heroku addons:create logdna:quaco</code>.</li>
-	<li>Finally, you deploy the starterkit by typing git push heroku master.</li>
-	<li>Once the deployment is done, you can type http://<code>&lt;app-name-in-alphanumeric-without-space&gt;</code>.herokuapp.com into your browser to see your shiny new application.</li>
+	<li>Finally, you deploy the starterkit by typing <code>git push heroku master</code>.</li>
+	<li>Once the deployment is done, you can type <code>http://&lt;app-name-in-alphanumeric-without-space&gt;.herokuapp.com</code> into your browser to see your shiny new application.</li>
 </ol>
 
 <br/>
