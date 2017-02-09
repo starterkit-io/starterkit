@@ -46,31 +46,19 @@ app.use(function (err, req, res, next) {
 })
 
 // Redis
-console.log('==> Connecting to Redis at', conf.get('redis:url'));
-var redisClient = require('redis').createClient(conf.get('redis:url'));
-redisClient.on('connect', function () {
-  console.log('==> Redis connected at ' + conf.get('redis:url'));
-  require('./lib/acl').getInstance(redisClient, 'acl_');
-});
-redisClient.on('error', function (err) {
-  console.log('==> Error Redis connection at ' + conf.get('redis:url') + ':\n' + err);
-  process.exit();
-});
+var redis = require('./lib/redis').getInstance();
 
 // DB
 var models = require('./models');
 
 // Session
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
 app.use(session({
-  store: new RedisStore({
-    client: redisClient
-  }),
+  store: redis.getStore(),
   secret: 'showmethemoney',
   resave: true,
   saveUninitialized: true
-})); // session middleware
+})); 
 
 // Passport
 var passport = require('passport');
