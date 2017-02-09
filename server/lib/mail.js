@@ -1,13 +1,13 @@
 "use strict";
 
 var Promise = require('bluebird');
-var nconf = require('nconf');
+var conf = require('./config').getInstance(); 
 var nodemailer = require('nodemailer');
 var spTransport = require('nodemailer-sparkpost-transport');
 
 var Mail = function () {
   var options = {
-    sparkPostApiKey: nconf.get('sparkpost:api:key')
+    sparkPostApiKey: conf.get('sparkpost:api:key')
   };
   this.client = nodemailer.createTransport(spTransport(options));
 };

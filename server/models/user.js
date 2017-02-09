@@ -1,7 +1,7 @@
 'use strict';
 
 var bcrypt = require('bcrypt-nodejs');
-var nconf = require('nconf');
+var conf = require('../lib/config').getInstance();
 var crypto = require('crypto');
 
 module.exports = function (sequelize, DataTypes) {
@@ -78,7 +78,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     instanceMethods: {
       generatePassword: function () {
-        var salt = bcrypt.genSaltSync(nconf.get('bcrypt:salt'));
+        var salt = bcrypt.genSaltSync(conf.get('bcrypt:salt'));
         return bcrypt.hashSync(this.password, salt);
       },
       validPassword: function (password) {

@@ -18,7 +18,7 @@ if (!process.env.NODE_ENV) {
 var isProduction = process.env.NODE_ENV !== 'development';
 var port = !isProduction ? 3000 : process.env.PORT;
 
-// Load nconf
+// Load config
 var config = require('./lib/config');
 var conf = config.getInstance();
 
@@ -111,7 +111,7 @@ app.use(function (req, res, next) {
 
 // Load brand name
 app.use(function (req, res, next) {
-  res.locals.brand = nconf.get('brand');
+  res.locals.brand = conf.get('brand');
   next();
 });
 
