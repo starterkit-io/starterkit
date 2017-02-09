@@ -1,0 +1,11 @@
+{
+  "sendgrid": {
+    "username": "demo.mail.starterkit.io",
+    "password": "tTVv7jtDt8"
+  },
+  "sparkpost": {
+    "api": {
+      "key": "42ef0fd9c58a8ed87ece33fcd146efd7a1b1c5aa"
+    }
+  }
+}

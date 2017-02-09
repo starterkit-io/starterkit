@@ -19,19 +19,8 @@ var isProduction = process.env.NODE_ENV !== 'development';
 var port = !isProduction ? 3000 : process.env.PORT;
 
 // Load nconf
-var nconf = require('nconf');
-
-// Case insensitive env variables
-// Remove this hack once nconf supports case insensitive keys
-// see https://github.com/indexzero/nconf/issues/155
-Object.keys(process.env).forEach(function (key) {
-  process.env[key.toLowerCase()] = process.env[key];
-});
-
-nconf.argv()
-  .env('_')
-  .file('environment', path.resolve(__dirname, './configs/' + process.env.NODE_ENV + '.json'))
-  .file('default', path.resolve(__dirname, './configs/default.json'));
+var config = require('./lib/config');
+var conf = config.getInstance();
 
 // bodyParser
 var bodyParser = require('body-parser');
@@ -57,14 +46,14 @@ app.use(function (err, req, res, next) {
 })
 
 // Redis
-console.log('==> Connecting to Redis at', nconf.get('redis:url'));
-var redisClient = require('redis').createClient(nconf.get('redis:url'));
+console.log('==> Connecting to Redis at', conf.get('redis:url'));
+var redisClient = require('redis').createClient(conf.get('redis:url'));
 redisClient.on('connect', function () {
-  console.log('==> Redis connected at ' + nconf.get('redis:url'));
+  console.log('==> Redis connected at ' + conf.get('redis:url'));
   require('./lib/acl').getInstance(redisClient, 'acl_');
 });
 redisClient.on('error', function (err) {
-  console.log('==> Error Redis connection at ' + nconf.get('redis:url') + ':\n' + err);
+  console.log('==> Error Redis connection at ' + conf.get('redis:url') + ':\n' + err);
   process.exit();
 });
 
