@@ -6,6 +6,12 @@ A starter kit for everyone with an idea. This kit is put together to get started
 
 You can find the demo at [https://starterkit.io](https://starterkit.io)
 
+## Deploy
+
+You can deploy to Heroku using the button below:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/starterkit-io/starterkit)
+
 ## Getting started
 
 We are working towards making it easier to get started with this starter kit everyday. The kit is still in beta stage, please follow the steps below to setup the project.
