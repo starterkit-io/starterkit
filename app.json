@@ -1,0 +1,48 @@
+{
+  "name": "StarterKit.io",
+  "description": "A starter kit for everyone with an idea",
+  "repository": "https://github.com/starterkit-io/starterkit/",
+  "website": "https://starterkit.io/",
+  "keywords": [
+  	"node", 
+  	"express", 
+  	"starterkit"
+  ],
+  "image": "heroku/nodejs",
+  "stack": "cedar-14",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+  	{
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "9.5"
+      }
+    },
+    {
+      "plan": "heroku-redis:hobby-dev"
+    },
+    {
+    	"plan": "sparkpost:free"
+    },
+    {
+    	"plan": "trace:lite"
+    },
+    {
+    	"plan": "librato:development"
+    },
+    {
+    	"plan": "logdna:quaco"
+    },
+    {
+    	"plan": "filepicker:free"
+    },
+    {
+    	"plan": "statushub:sh-dev"
+    }
+  ]
+}
